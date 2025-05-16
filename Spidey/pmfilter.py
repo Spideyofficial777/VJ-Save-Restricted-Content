@@ -1,11 +1,19 @@
 import logging
 from pyrogram import Client, filters, enums
 from pyrogram.types import (
-    CallbackQuery,
+    Message,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
+    CallbackQuery,
 )
-from pyrogram.errors import UserNotParticipant
+from pyrogram.errors import (
+    FloodWait,
+    InputUserDeactivated,
+    UserIsBlocked,
+    UserNotParticipant,
+    MessageTooLong,
+    PeerIdInvalid,
+)
 from Script import script
 
 @Client.on_callback_query()
@@ -24,10 +32,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except:
             pass
 
-    elif callback_query.data == "about":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "about":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
         features_keyboard = InlineKeyboardMarkup(
             [
@@ -46,17 +54,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
         )
 
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
             script.ABOUT_TXT, reply_markup=features_keyboard
         )
 
-    elif callback_query.data == "feedback_feature":
-        await callback_query.answer(
+    elif query.data == "feedback_feature":
+        await query.answer(
             "🛠️ Feedback: Save and display user feedback for admins seamlessly!",
             show_alert=True,
         )
 
-    elif callback_query.data == "disclaimer":
+    elif query.data == "disclaimer":
         disclaimer_keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -68,20 +76,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
         )
 
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
             script.DISCLAIMER_TXT, reply_markup=disclaimer_keyboard
         )
 
-    elif callback_query.data == "back":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "back":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
-        welcome_message = script.START_MSG.format(callback_query.from_user.mention)
+        welcome_message = script.START_MSG.format(query.from_user.mention)
 
         main_keyboard = InlineKeyboardMarkup(
             [
@@ -109,15 +117,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
     )
 
     # Final message
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
         welcome_message,     reply_markup=main_keyboard
     )
 
 
-    elif callback_query.data == "group_info":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "group_info":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
         buttons = [
             [
@@ -147,19 +155,19 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         reply_markup = InlineKeyboardMarkup(buttons)
 
-        await callback_query.message.edit_text(
-            text=script.CHANNELS.format(callback_query.from_user.mention),
+        await query.message.edit_text(
+            text=script.CHANNELS.format(query.from_user.mention),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
         )
 
-    elif callback_query.data == "rendr":
-        await callback_query.answer(script.ALERT_MSG, show_alert=True)
+    elif query.data == "rendr":
+        await query.answer(script.ALERT_MSG, show_alert=True)
 
-    elif callback_query.data == "source":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "source":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
         buttons = [
         [
@@ -171,9 +179,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup = InlineKeyboardMarkup(buttons)
 
 
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
             text=script.SOURCE_TXT.format(
-                callback_query.from_user.mention if callback_query.from_user else "User"
+                query.from_user.mention if query.from_user else "User"
             ),
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
@@ -181,10 +189,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 
-    elif callback_query.data == "spidey":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "spidey":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
 
         buttons = [
             [
@@ -195,7 +203,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         reply_markup = InlineKeyboardMarkup(buttons)
 
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
             text=script.OWNER_TEXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
