@@ -14,6 +14,8 @@ from Spidey.strings import HELP_TXT
 from Script import script
 from pyrogram.errors import UserNotParticipant
 from database.db import * # get_all_users, add_user, already_db
+from utils import* #
+
 
 class batch_temp(object):
     IS_BATCH = {}
