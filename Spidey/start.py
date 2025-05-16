@@ -58,6 +58,7 @@ def progress(current, total, message, type):
     with open(f'{message.id}{type}status.txt', "w") as fileup:
         fileup.write(f"{current * 100 / total:.1f}%")
 
+welcome_image = "https://envs.sh/v3t.jpg"
 
 # start command
 from pyrogram import Client, filters
