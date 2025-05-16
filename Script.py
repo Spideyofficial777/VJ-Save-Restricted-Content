@@ -4,7 +4,7 @@
 
 class script(object):
 
-    START_MSG = """<b>🦊 Hᴇʟʟᴏ {}, {},{}\n\nI'ᴍ ᴀɴ ᴀᴜᴛᴏ-ᴀᴘᴘʀᴏᴠᴇ [ᴀᴅᴍɪɴ](https://t.me/hacker_x_official_777) [Jᴏɪɴ Rᴇǫᴜᴇsᴛs](https://t.me/telegram/153) ʙᴏᴛ.\nI ᴄᴀɴ ᴀᴘᴘʀᴏᴠᴇ ᴜsᴇʀs ɪɴ Gʀᴏᴜᴘs/Cʜᴀᴛs. Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ᴀɴᴅ [ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ᴛᴏ ᴀᴅᴍɪɴ]()\n\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ :  <a href='https://telegram.me/Hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏꜰꜰɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
+    START_MSG = """<b>🦊 Hᴇʟʟᴏ {}, {}\n\nI'ᴍ ᴀɴ ᴀᴜᴛᴏ-ᴀᴘᴘʀᴏᴠᴇ [ᴀᴅᴍɪɴ](https://t.me/hacker_x_official_777) [Jᴏɪɴ Rᴇǫᴜᴇsᴛs](https://t.me/telegram/153) ʙᴏᴛ.\nI ᴄᴀɴ ᴀᴘᴘʀᴏᴠᴇ ᴜsᴇʀs ɪɴ Gʀᴏᴜᴘs/Cʜᴀᴛs. Aᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀᴛ ᴀɴᴅ [ᴘʀᴏᴍᴏᴛᴇ ᴍᴇ ᴛᴏ ᴀᴅᴍɪɴ]()\n\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ :  <a href='https://telegram.me/Hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏꜰꜰɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
     
     DISCLAIMER_TXT = """
 <b>      ᴀᴜᴛᴏ ʀᴇǫᴜᴇsᴛ ᴀᴄᴄᴇᴘᴛ ʙᴏᴛ
