@@ -201,7 +201,8 @@ async def check_subscription(client, callback_query: CallbackQuery):
         )
 
         await callback_query.message.edit_text(
-            script.START_MSG.format(message.from_user.mention, get_status()),
+            script.START_MSG.format(query.from_user.mention
+, get_status()),
             reply_markup=keyboard,
             disable_web_page_preview=True
         )
