@@ -15,6 +15,8 @@ from pyrogram.errors import (
     PeerIdInvalid,
 )
 from Script import script
+from utils import * 
+
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
@@ -208,3 +210,69 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML,
     )
+
+
+@client.on_callback_query()
+async def on_callback_query(_, callback_query: CallbackQuery):
+    if callback_query.data == "features":
+        await callback_query.message.edit_text(text="● ◌ ◌")
+        await callback_query.message.edit_text(text="● ● ◌")
+        await callback_query.message.edit_text(text="● ● ●")
+        
+        about_keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        "sᴜʙsᴄʀɪʙᴇ", callback_data="close_data"
+                    ),
+                    InlineKeyboardButton(
+                        "ʀᴇᴍᴏᴠᴇʙɢ", url="https://example.com/removebg"
+                    ),
+                    InlineKeyboardButton(
+                        "ʜᴀᴄᴋs", url="https://github.com/Spideyofficial777"
+                    ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "Rɪɴɢᴛᴏɴᴇ", url="https://example.com/ringtone"
+                    ),
+                    InlineKeyboardButton("Cʜᴀᴛɢᴘᴛ", url="https://example.com/chatgpt"),
+                    InlineKeyboardButton("Oᴡɴᴇʀ", callback_data="spidey"),
+                ],
+                [
+                    InlineKeyboardButton("Mᴏᴠɪᴇs", url="https://example.com/movies"),
+                    InlineKeyboardButton(
+                        "Uᴘᴅᴀᴛᴇs", url="https://t.me/live_update_channel"
+                    ),
+                    InlineKeyboardButton(
+                        "Sᴜᴘᴘᴏʀᴛ", url="https://t.me/SPIDEYOFFICIAL777"
+                    ),
+                ],
+                [InlineKeyboardButton("⋞ Back", callback_data="back")],
+            ]
+        )
+
+        await callback_query.message.edit_text(
+            script.FEATURES_TXT, reply_markup=about_keyboard
+        )
+
+@client.on_message(filters.command("users") & filters.user(ADMINS))
+async def list_users(client, message: Message):
+    Spidey = await message.reply("📌 **Fetching Users List...**")
+    
+    users_list = get_all_users()
+    if not users_list:
+        return await Spidey.edit_text("🚫 **No users found in the database.**")
+
+    out = "👥 **Users Saved In DB:**\n\n"
+    for user in users_list:
+        user_id = user.get("user_id")
+        user_name = user.get("name", f"User {user_id}")
+        is_banned = user.get("ban_status", {}).get("is_banned", False)
+
+        out += f"➤ <a href='tg://user?id={user_id}'>{user_name}</a>"
+        if is_banned:
+            out += " ❌ (Banned User)"
+        out += "\n"
+
+    await Spidey.edit_text(out)    
