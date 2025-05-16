@@ -8,8 +8,7 @@ class script(object):
 ɪ'ᴍ ʏᴏᴜʀ ʀᴇʟɪᴀʙʟᴇ <a href ='https://t.me/hacker_x_official_777'>ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴀᴠᴇʀ ʙᴏᴛ.</a>\n
 ɪ ᴇxᴄʟᴜꜱɪᴠᴇʟʏ ꜱᴀᴠᴇ ᴀɴᴅ ᴘʀᴏᴠɪᴅᴇ ᴀᴄᴄᴇꜱꜱ ᴛᴏ ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴡɪғᴛʟʏ ᴀɴᴅ ꜱᴇᴄᴜʀᴇʟʏ.\n
 Jᴜꜱᴛ ꜱᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛ ʟɪɴᴋ, ᴀɴᴅ I'ʟʟ ʜᴀɴᴅʟᴇ ᴛʜᴇ ʀᴇꜱᴛ!\n
-\n
-<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href ='https://t.me/hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏғғɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
+\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href ='https://t.me/hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏғғɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
     
     DISCLAIMER_TXT = """
 <b>
