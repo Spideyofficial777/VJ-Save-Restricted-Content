@@ -1,7 +1,3 @@
-# Don't Remove Credit Tg - @Spidey
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-
 import os
 import asyncio 
 import pyrogram
@@ -61,10 +57,6 @@ def progress(current, total, message, type):
 welcome_image = "https://envs.sh/v3t.jpg"
 
 # start command
-from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from pyrogram.errors import UserNotParticipant
-
 @Client.on_message(filters.command("start"))
 async def start(client, message):
     try:
@@ -184,47 +176,57 @@ async def start(client, message):
 @Client.on_callback_query(filters.regex("chk"))
 async def check_subscription(client, callback_query: CallbackQuery):
     try:
+        missing_channels = []
+
         for channel in CHANNEL_IDS:
             try:
                 await client.get_chat_member(channel, callback_query.from_user.id)
             except UserNotParticipant:
-                raise UserNotParticipant 
-        keyboard = InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("➕ Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕", 
+                missing_channels.append(channel)
+
+        if not missing_channels:
+            keyboard = InlineKeyboardMarkup([
+                [InlineKeyboardButton("➕ Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Cʜᴀɴɴᴇʟ ➕",
                     url="https://t.me/SPIDER_MAN_GAMING_bot?startchannel=Bots4Sale&admin=invite_users+manage_chat")],
-                [InlineKeyboardButton("🚀 Cʜᴀɴɴᴇʟ", url="https://t.me/+cMlrPqMjUwtmNTI1"), 
+                [InlineKeyboardButton("🚀 Cʜᴀɴɴᴇʟ", url="https://t.me/+cMlrPqMjUwtmNTI1"),
                  InlineKeyboardButton("💬 Sᴜᴘᴘᴏʀᴛ", url="https://t.me/SPIDEYOFFICIAL777")],
-                [InlineKeyboardButton("➕ Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕", 
+                [InlineKeyboardButton("➕ Aᴅᴅ Mᴇ ᴛᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ➕",
                     url="https://t.me/SPIDER_MAN_GAMING_bot?startgroup=true")]
-            ]
-        )
+            ])
 
-        await callback_query.message.edit_text(
-            script.START_MSG.format(query.from_user.mention
-, get_status()),
-            reply_markup=keyboard,
-            disable_web_page_preview=True
-        )
+            await callback_query.message.edit_text(
+                script.START_MSG.format(callback_query.from_user.mention, get_status()),
+                reply_markup=keyboard,
+                disable_web_page_preview=True
+            )
+        else:
+            # Show only missing channels
+            buttons = []
+            for channel in missing_channels:
+                try:
+                    chat = await client.get_chat(channel)
+                    name = chat.title or "Channel"
+                    link = f"https://t.me/{chat.username}" if chat.username else await client.export_chat_invite_link(channel)
+                    buttons.append([InlineKeyboardButton(f"🚀 Join {name}", url=link)])
+                except Exception as e:
+                    print(f"Error fetching channel info: {e}")
+                    continue
 
-    except UserNotParticipant:
-        buttons = []
-        for channel in CHANNEL_IDS:
-            try:
-                chat = await client.get_chat(channel)  
-                channel_name = chat.title if chat.title else "Channel"
-                channel_link = f"https://t.me/{chat.username}" if chat.username else await client.export_chat_invite_link(channel)
-                
-                buttons.append([InlineKeyboardButton(f"🚀 Join {channel_name}", url=channel_link)])
-            except Exception as e:
-                print(f"Error fetching channel info: {e}")
-                continue
-        buttons.append([InlineKeyboardButton("🔄 ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ", callback_data="chk")])
-        keyboard = InlineKeyboardMarkup(buttons)     
-        await callback_query.answer(
-            "🙅 Yᴏᴜ ᴀʀᴇ ɴᴏᴛ sᴜʙsᴄʀɪʙᴇᴅ ᴛᴏ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴀɴᴅ ᴄʟɪᴄᴋ 'Cʜᴇᴄᴋ Aɢᴀɪɴ' ᴛᴏ ᴄᴏɴғɪʀᴍ 🙅", 
-            show_alert=True
-        )
+            buttons.append([InlineKeyboardButton("🔄 ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ", callback_data="chk")])
+            keyboard = InlineKeyboardMarkup(buttons)
+
+            await callback_query.answer(
+                "🙅 Yᴏᴜ ᴀʀᴇ ɴᴏᴛ sᴜʙsᴄʀɪʙᴇᴅ ᴛᴏ ᴀʟʟ ʀᴇǫᴜɪʀᴇᴅ ᴄʜᴀɴɴᴇʟs. Jᴏɪɴ ᴀɴᴅ ᴛᴀᴘ 'Cʜᴇᴄᴋ Aɢᴀɪɴ' 🙅",
+                show_alert=True
+            )
+            await callback_query.message.edit_text(
+                "🔔 Jᴏɪɴ ᴛʜᴇsᴇ ᴄʜᴀɴɴᴇʟs ᴛᴏ ᴄᴏɴᴛɪɴᴜᴇ:",
+                reply_markup=keyboard
+            )
+
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+
 
             
 
