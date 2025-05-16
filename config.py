@@ -31,7 +31,7 @@ START_IMG = (environ.get('START_IMG', 'https://graph.org/file/2518d4eb8c88f8f669
 CHANNEL_IDS = list(map(int, getenv("CHANNEL_IDS", "-1002470391435,-1002433552221").split(",")))
 
 #temp
-class temp(object):    
+"""class temp(object):    
     U_NAME = None
     B_NAME = None
-    MELCOW = {} 
+    MELCOW = {}"""
