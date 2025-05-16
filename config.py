@@ -1,3 +1,4 @@
+import os
 from os import path, getenv, environ
 
 # Bot token @Botfather
