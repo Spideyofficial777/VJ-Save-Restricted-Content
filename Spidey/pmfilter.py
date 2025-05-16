@@ -16,7 +16,7 @@ from pyrogram.errors import (
 )
 from Script import script
 from utils import * 
-
+from config import *  
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
