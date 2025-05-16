@@ -82,7 +82,8 @@ Iᴅ = <code>{}</code>
 Tᴏᴛᴀʟ Mᴇᴍʙᴇʀs = <code>{}</code>
 Aᴅᴅᴇᴅ Bʏ - {}
 """
-
+    ALRT_TXT = """ᴊᴀʟᴅɪ ʏᴇʜᴀ sᴇ ʜᴀᴛᴏ !"""
+    
 # Don't Remove Credit @spideyofficial777
 # Subscribe YouTube Channel For Amazing Bot @spidey_official_777
 # Ask Doubt on telegram @hacker_x_official_777      
