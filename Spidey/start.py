@@ -58,13 +58,17 @@ def progress(current, total, message, type):
 
 
 # start command
-@app.on_message(filters.command("start"))
-async def start(bot, message):
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.errors import UserNotParticipant
+
+@Client.on_message(filters.command("start"))
+async def start(client, message):
     try:
         if temp.U_NAME is None:
-            temp.U_NAME = (await bot.get_me()).username
+            temp.U_NAME = (await client.get_me()).username
         if temp.B_NAME is None:
-            temp.B_NAME = (await bot.get_me()).first_name  
+            temp.B_NAME = (await client.get_me()).first_name  
 
     except Exception as e:
         print(f"Error fetching bot details: {e}")  
@@ -87,9 +91,8 @@ async def start(bot, message):
             chat_title=message.chat.title if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP] else "Private Chat",
             time=datetime.now().strftime("%d-%b-%Y %I:%M %p")
         )
-        await bot.send_message(LOG_CHANNEL, Spidey)
+        await client.send_message(LOG_CHANNEL, Spidey)
 
-    # If in a group, send the start message without force sub check
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         buttons = [
             [InlineKeyboardButton('• ᴀᴅᴅ ᴍᴇ ᴛᴏ ᴜʀ ᴄʜᴀᴛ •', url=f'http://t.me/{temp.U_NAME}?startgroup=true')],
@@ -103,11 +106,10 @@ async def start(bot, message):
         await message.reply(script.GSTART_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
         return  
 
-    # In private chat, check force subscription
     try:
         for channel in CHANNEL_IDS:
             try:
-                await app.get_chat_member(channel, message.from_user.id)
+                await client.get_chat_member(channel, message.from_user.id)
             except UserNotParticipant:
                 raise UserNotParticipant 
 
@@ -150,11 +152,11 @@ async def start(bot, message):
         buttons = []
         for channel in CHANNEL_IDS:
             try:
-                chat = await app.get_chat(channel)  
+                chat = await client.get_chat(channel)  
                 if chat.username:
                     channel_link = f"https://t.me/{chat.username}"
                 else:
-                    channel_link = await app.export_chat_invite_link(channel) 
+                    channel_link = await client.export_chat_invite_link(channel) 
 
                 buttons.append([InlineKeyboardButton(f"🚀 Join {chat.title}", url=channel_link)])
 
@@ -174,32 +176,12 @@ async def start(bot, message):
         )
 
 
-
-
-async def get_channel_link(client: Client, channel_id: int) -> str:
-    """Fetches the invite link of a Telegram channel."""
-    try:
-        chat = await client.get_chat(channel_id)
-        if chat.username:
-            return f"https://t.me/{chat.username}"
-        
-        invite_link = chat.invite_link
-        if not invite_link:
-            invite_link = await client.export_chat_invite_link(channel_id)
-
-        return invite_link  
-    except Exception as e:
-        print(f"Error fetching channel link: {e}")
-        return "https://t.me/SPIDEYOFFICIAL777"  # Default backup link
-
-
-
-@app.on_callback_query(filters.regex("chk"))
-async def check_subscription(_, callback_query: CallbackQuery):
+@Client.on_callback_query(filters.regex("chk"))
+async def check_subscription(client, callback_query: CallbackQuery):
     try:
         for channel in CHANNEL_IDS:
             try:
-                await app.get_chat_member(channel, callback_query.from_user.id)
+                await client.get_chat_member(channel, callback_query.from_user.id)
             except UserNotParticipant:
                 raise UserNotParticipant 
         keyboard = InlineKeyboardMarkup(
@@ -223,9 +205,9 @@ async def check_subscription(_, callback_query: CallbackQuery):
         buttons = []
         for channel in CHANNEL_IDS:
             try:
-                chat = await app.get_chat(channel)  
+                chat = await client.get_chat(channel)  
                 channel_name = chat.title if chat.title else "Channel"
-                channel_link = f"https://t.me/{chat.username}" if chat.username else await app.export_chat_invite_link(channel)
+                channel_link = f"https://t.me/{chat.username}" if chat.username else await client.export_chat_invite_link(channel)
                 
                 buttons.append([InlineKeyboardButton(f"🚀 Join {channel_name}", url=channel_link)])
             except Exception as e:
@@ -237,6 +219,7 @@ async def check_subscription(_, callback_query: CallbackQuery):
             "🙅 Yᴏᴜ ᴀʀᴇ ɴᴏᴛ sᴜʙsᴄʀɪʙᴇᴅ ᴛᴏ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ. Pʟᴇᴀsᴇ ᴊᴏɪɴ ᴀɴᴅ ᴄʟɪᴄᴋ 'Cʜᴇᴄᴋ Aɢᴀɪɴ' ᴛᴏ ᴄᴏɴғɪʀᴍ 🙅", 
             show_alert=True
         )
+
             
 
 
