@@ -89,7 +89,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(text="● ● ◌")
         await query.message.edit_text(text="● ● ●")
 
-        welcome_message = script.START_MSG.format(message.from_user.mention, get_status())
+        welcome_message = script.START_MSG.format(query.from_user.mention, get_status())
 
         main_keyboard = InlineKeyboardMarkup(
             [
