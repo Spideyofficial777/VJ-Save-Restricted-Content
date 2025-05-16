@@ -15,7 +15,6 @@ from Script import script
 from pyrogram.errors import UserNotParticipant
 from database.db import * # get_all_users, add_user, already_db
 from utils import* #
-import random
 
 class batch_temp(object):
     IS_BATCH = {}
@@ -115,6 +114,8 @@ async def start(client, message):
                 await client.get_chat_member(channel, message.from_user.id)
             except UserNotParticipant:
                 raise UserNotParticipant 
+        
+        import random
         
         welcome_image_url = random.choice(START_IMG)
 
