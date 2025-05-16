@@ -5,10 +5,10 @@
 class script(object):
 
     START_MSG = """<b>🦊 ʜᴇʟʟᴏ {}, {}\n
-ɪ'ᴍ ʏᴏᴜʀ ʀᴇʟɪᴀʙʟᴇ <a href ='https://t.me/hacker_x_official_777'>ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴀᴠᴇʀ ʙᴏᴛ.</a>\n
-ɪ ᴇxᴄʟᴜꜱɪᴠᴇʟʏ ꜱᴀᴠᴇ ᴀɴᴅ ᴘʀᴏᴠɪᴅᴇ ᴀᴄᴄᴇꜱꜱ ᴛᴏ ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴡɪғᴛʟʏ ᴀɴᴅ ꜱᴇᴄᴜʀᴇʟʏ.\n
+ɪ'ᴍ ʏᴏᴜʀ ʀᴇʟɪᴀʙʟᴇ <a href ='https://t.me/hacker_x_official_777'>ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴀᴠᴇʀ ʙᴏᴛ.</a>
+ɪ ᴇxᴄʟᴜꜱɪᴠᴇʟʏ ꜱᴀᴠᴇ ᴀɴᴅ ᴘʀᴏᴠɪᴅᴇ ᴀᴄᴄᴇꜱꜱ ᴛᴏ ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴄᴏɴᴛᴇɴᴛ ꜱᴡɪғᴛʟʏ ᴀɴᴅ ꜱᴇᴄᴜʀᴇʟʏ.
 Jᴜꜱᴛ ꜱᴇɴᴅ ᴍᴇ ᴛʜᴇ ᴄᴏɴᴛᴇɴᴛ ʟɪɴᴋ, ᴀɴᴅ I'ʟʟ ʜᴀɴᴅʟᴇ ᴛʜᴇ ʀᴇꜱᴛ!\n
-\n<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href ='https://t.me/hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏғғɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
+<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ: <a href ='https://t.me/hacker_x_official_777'>ʜᴀᴄᴋᴇʀ_x_ᴏғғɪᴄɪᴀʟ_𝟽𝟽𝟽</a></blockquote></b>"""
     
     DISCLAIMER_TXT = """
 <b>
@@ -102,7 +102,36 @@ Tᴏᴛᴀʟ Mᴇᴍʙᴇʀs = <code>{}</code>
 Aᴅᴅᴇᴅ Bʏ - {}
 """
     ALRT_TXT = """ᴊᴀʟᴅɪ ʏᴇʜᴀ sᴇ ʜᴀᴛᴏ !"""
-    
+
+    HELP_TXT = """**🌟 Help Menu** 
+
+**__FOR PRIVATE CHATS__**
+
+__first send invite link of the chat (unnecessary if the account of string session already member of the chat)
+then send post/s link__
+
+
+**__FOR BOT CHATS__**
+
+__send link with '/b/', bot's username and message id, you might want to install some unofficial client to get the id like below__
+
+```
+https://t.me/b/botusername/4321
+```
+
+**__MULTI POSTS__**
+
+__send public/private posts link as explained above with formate "from - to" to send multiple messages like below__
+
+
+```
+https://t.me/xxxx/1001-1010
+
+https://t.me/c/xxxx/101 - 120
+```
+
+__note that space in between doesn't matter__"""
+           
 # Don't Remove Credit @spideyofficial777
 # Subscribe YouTube Channel For Amazing Bot @spidey_official_777
 # Ask Doubt on telegram @hacker_x_official_777      
