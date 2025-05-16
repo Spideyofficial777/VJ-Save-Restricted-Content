@@ -12,7 +12,6 @@ from config import API_ID, API_HASH, ERROR_MESSAGE
 from database.db import db
 from Spidey.strings import HELP_TXT
 from Script import script
-from pyrogram.errors import UserNotParticipant
 
 class batch_temp(object):
     IS_BATCH = {}
