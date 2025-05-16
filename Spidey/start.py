@@ -52,7 +52,7 @@ def progress(current, total, message, type):
     with open(f'{message.id}{type}status.txt', "w") as fileup:
         fileup.write(f"{current * 100 / total:.1f}%")
 
-#welcome_image = "https://envs.sh/v3t.jpg"
+welcome_image = "https://envs.sh/v3t.jpg"
 
 # start command
 @Client.on_message(filters.command("start"))
@@ -145,30 +145,31 @@ async def start(client, message):
     except UserNotParticipant:
         import random
         buttons = []
+        missing_channels = []
+
         for channel in CHANNEL_IDS:
             try:
-                chat = await client.get_chat(channel)  
-                if chat.username:
-                    channel_link = f"https://t.me/{chat.username}"
-                else:
-                    channel_link = await client.export_chat_invite_link(channel) 
-
-                buttons.append([InlineKeyboardButton(f"🚀 Join {chat.title}", url=channel_link)])
-
-            except Exception as e:
-                print(f"Error fetching channel link: {e}")  
-                continue 
-
+                await client.get_chat_member(channel, message.from_user.id)
+            except UserNotParticipant:
+                try:
+                    chat = await client.get_chat(channel)
+                    name = chat.title or "Channel"
+                    link = f"https://t.me/{chat.username}" if chat.username else await client.export_chat_invite_link(channel)
+                    buttons.append([InlineKeyboardButton(f"🚀 Join {name}", url=link)])
+                except Exception as e:
+                    print(f"Error fetching channel info: {e}")
+                    continue
+    
         buttons.append([InlineKeyboardButton("🔄 ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ", callback_data="chk")])
         keyboard = InlineKeyboardMarkup(buttons)
 
         await message.reply_photo(
-            photo=WELCOME_IMAGE,
-            caption=f"<b>⚠️ Access Denied! ⚠️\n\n🔥 Hello {message.from_user.mention}!\n\n"
-                    "You need to join all required channels before proceeding!\n\n"
-                    "👉 [✨ Join Now ✨](https://t.me/SPIDEYOFFICIAL777)</b>",
+            photo=random.choice(START_IMG),
+            caption=f"<b>⚠️ Access Denied!\n\nHello {message.from_user.mention}!\n\n"
+                "You must join the required channels to continue:</b>",
             reply_markup=keyboard
         )
+
 
 
 @Client.on_callback_query(filters.regex("chk"))
@@ -234,7 +235,7 @@ async def check_subscription(client, callback_query: CallbackQuery):
 async def send_help(client: Client, message: Message):
     await client.send_message(
         chat_id=message.chat.id, 
-        text=f"{HELP_TXT}"
+        text="script.HELP_TXT"
     )
 
 # cancel command

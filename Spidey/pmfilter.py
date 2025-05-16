@@ -17,6 +17,8 @@ from pyrogram.errors import (
 from Script import script
 from utils import * 
 from config import *  
+from database.db import db, get_all_users, add_user, already_db
+
 
 @Client.on_callback_query()
 async def cb_handler(client: Client, query: CallbackQuery):
@@ -211,13 +213,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML,
     )
 
-
-@Client.on_callback_query()
-async def on_callback_query(_, callback_query: CallbackQuery):
-    if callback_query.data == "features":
-        await callback_query.message.edit_text(text="● ◌ ◌")
-        await callback_query.message.edit_text(text="● ● ◌")
-        await callback_query.message.edit_text(text="● ● ●")
+    elif query.data == "features":
+        await query.message.edit_text(text="● ◌ ◌")
+        await query.message.edit_text(text="● ● ◌")
+        await query.message.edit_text(text="● ● ●")
         
         about_keyboard = InlineKeyboardMarkup(
             [
@@ -252,7 +251,7 @@ async def on_callback_query(_, callback_query: CallbackQuery):
             ]
         )
 
-        await callback_query.message.edit_text(
+        await query.message.edit_text(
             script.FEATURES_TXT, reply_markup=about_keyboard
         )
 
