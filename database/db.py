@@ -39,11 +39,17 @@ class Database:
         await self.col.delete_many({'id': int(user_id)})
 
     async def set_session(self, id, session):
-        await self.col.update_one({'id': int(id)}, {'$set': {'session': session}})
+        await self.col.update_one(
+            {'id': int(id)},
+            {'$set': {'session': session}},
+            upsert=True
+    )
 
     async def get_session(self, id):
         user = await self.col.find_one({'id': int(id)})
-        return user.get('session')
+        if user:
+            return user.get('session')
+        return None
 
 
 # Synchronous user functions
