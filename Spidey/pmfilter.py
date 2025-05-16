@@ -212,7 +212,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     )
 
 
-@client.on_callback_query()
+@Client.on_callback_query()
 async def on_callback_query(_, callback_query: CallbackQuery):
     if callback_query.data == "features":
         await callback_query.message.edit_text(text="● ◌ ◌")
@@ -256,7 +256,7 @@ async def on_callback_query(_, callback_query: CallbackQuery):
             script.FEATURES_TXT, reply_markup=about_keyboard
         )
 
-@client.on_message(filters.command("users") & filters.user(ADMINS))
+@Client.on_message(filters.command("users") & filters.user(ADMINS))
 async def list_users(client, message: Message):
     Spidey = await message.reply("📌 **Fetching Users List...**")
     
