@@ -89,7 +89,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.edit_text(text="● ● ◌")
         await query.message.edit_text(text="● ● ●")
 
-        welcome_message = script.START_MSG.format(query.from_user.mention)
+        welcome_message = script.START_MSG.format(message.from_user.mention, get_status())
 
         main_keyboard = InlineKeyboardMarkup(
             [
@@ -134,20 +134,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 )
             ],
             [
-                InlineKeyboardButton("• ɢʀᴏᴜᴘ •", url="https://t.me/+-eCz1o7dfZ0wMmI1"),
+                InlineKeyboardButton("• ᴍᴏᴠɪᴇ ɢʀᴏᴜᴘ •", url="https://t.me/+KTXnXf_YPxJlOGRl"),
                 InlineKeyboardButton(
-                    "• ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/+9tdbATrOMLNlN2I1"
+                    "• ᴜᴘᴅᴀᴛᴇs •", url="https://t.me/SpideyOfficialUpdatez"
                 ),
             ],
             [
                 InlineKeyboardButton("• ʜᴀᴄᴋ •", url="https://t.me/+cMlrPqMjUwtmNTI1"),
                 InlineKeyboardButton(
-                    "• ᴍᴏᴠɪᴇғʟɪx •", url="https://t.me/SPIDEYOFFICIAL_777"
+                    "• 𝟷𝟾+ 🚫 •", url="https://t.me/movie_flex_official"
                 ),
             ],
             [
                 InlineKeyboardButton(
-                    "• ᴀɴɪᴍᴇ ᴄʀᴜɪsᴇ •", url="https://t.me/+4nyaulfn0sliZTE1"
+                    "• ᴄɪɴᴇғʟɪx •", url="https://t.me/+QVmLP_hlHNw3M2I1"
                 )
             ],
             [InlineKeyboardButton("⪻ ʙᴀᴄᴋ •", callback_data="back")],

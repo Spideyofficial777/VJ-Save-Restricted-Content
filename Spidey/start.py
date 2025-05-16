@@ -52,7 +52,7 @@ def progress(current, total, message, type):
     with open(f'{message.id}{type}status.txt', "w") as fileup:
         fileup.write(f"{current * 100 / total:.1f}%")
 
-welcome_image = "https://envs.sh/v3t.jpg"
+#welcome_image = "https://envs.sh/v3t.jpg"
 
 # start command
 @Client.on_message(filters.command("start"))
@@ -163,7 +163,7 @@ async def start(client, message):
         keyboard = InlineKeyboardMarkup(buttons)
 
         await message.reply_photo(
-            photo=welcome_image,
+            photo=WELCOME_IMAGE,
             caption=f"<b>⚠️ Access Denied! ⚠️\n\n🔥 Hello {message.from_user.mention}!\n\n"
                     "You need to join all required channels before proceeding!\n\n"
                     "👉 [✨ Join Now ✨](https://t.me/SPIDEYOFFICIAL777)</b>",
