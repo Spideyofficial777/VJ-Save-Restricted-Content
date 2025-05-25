@@ -15,7 +15,7 @@ ADMINS = list(map(int, getenv("ADMINS", "5518489725").split()))
 
 # Your Mongodb Database Url
 # Warning - Give Db uri in deploy server environment variable, don't give in repo.
-DB_URI = os.environ.get("DB_URI", "mongodb+srv://vajoko2131:x3qqdqblhmi0s2fX@cluster0.xrpgiv7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0") # Warning - Give Db uri in deploy server environment variable, don't give in repo.
+DB_URI = os.environ.get("DB_URI", "mongodb://Soldier:QTo6GiCGk4xQTRRw@cluster0-shard-00-00.igba5fh.mongodb.net:27017,cluster0-shard-00-01.igba5fh.mongodb.net:27017,cluster0-shard-00-02.igba5fh.mongodb.net:27017/?ssl=true&replicaSet=atlas-b91rkp-shard-0&authSource=admin&retryWrites=true&w=majority") # Warning - Give Db uri in deploy server environment variable, don't give in repo.
 DB_NAME = os.environ.get("DB_NAME", "spideysavecontentbot")
 
 # If You Want Error Message In Your Personal Message Then Turn It True Else If You Don't Want Then Flase
